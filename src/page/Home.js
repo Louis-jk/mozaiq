@@ -50,9 +50,6 @@ const Home = props => {
 
   const {currRoute} = useSelector(state => state.routeReducer);
 
-  console.log('HOME route', route);
-  console.log('store currRouteName', currRoute.name);
-
   // 웹작업 토큰이 회원테이블에 있으면 자동로그인 없으면 로그인 페이지로 작업
   const domainUrl = 'mozaiq.kr';
   const appDomain = `https://${domainUrl}/`;
@@ -75,8 +72,6 @@ const Home = props => {
       });
 
     const linkEvent = Linking.addEventListener('url', e => {
-      console.log('앱 실행 중 Linking e', e);
-
       // 앱이 실행되어있는 상태에서 요청이 왔을 때 처리하는 이벤트 등록
       const replaceUrl = e.url.replace('mozaiq://', '');
       const fullUrl = `https://${replaceUrl}`;
@@ -85,8 +80,6 @@ const Home = props => {
 
       const redirectTo = 'window.location = "' + fullUrl + '"';
       webViews.current.injectJavaScript(redirectTo);
-
-      console.log('앱 실행 중 Linking full Url', fullUrl);
     });
 
     return () => {
@@ -112,7 +105,7 @@ const Home = props => {
       authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
     if (enabled) {
-      console.log('Authorization status:', authStatus);
+      // console.log('Authorization status:', authStatus);
       getToken();
     }
   };
@@ -121,7 +114,7 @@ const Home = props => {
     messaging()
       .getToken()
       .then(token => {
-        console.log('FCM token >> ', token);
+        // console.log('FCM token >> ', token);
 
         if (token) {
           const type = route.params?.type;
@@ -145,8 +138,6 @@ const Home = props => {
 
             // const redirectTo = 'window.location = "' + url + token + '"';
             // webViews.current.injectJavaScript(redirectTo);
-
-            console.log('토큰 들어오면 web url', url + token);
           }
 
           return true;
@@ -207,7 +198,6 @@ const Home = props => {
     // 백그라운드 상태
     messaging().onNotificationOpenedApp(remoteMessage => {
       if (Platform.OS === 'ios') {
-        console.log('ios remoteMessage', remoteMessage);
         PushNotificationIOS.addNotificationRequest({
           id: remoteMessage.messageId,
           title: remoteMessage.notification.title,
@@ -234,7 +224,6 @@ const Home = props => {
       .then(remoteMessage => {
         if (remoteMessage) {
           if (Platform.OS === 'ios') {
-            console.log('ios remoteMessage', remoteMessage);
             PushNotificationIOS.addNotificationRequest({
               id: remoteMessage.messageId,
               title: remoteMessage.notification.title,
@@ -277,24 +266,19 @@ const Home = props => {
             '. His profile id is: ' +
             currentProfile.userID,
         );
-        console.log('페북 로그인 currentProfile ::', currentProfile);
 
         const params = JSON.stringify({
           type: 'facebook_login',
           data: currentProfile,
         });
 
-        console.log('params ?', params);
         webViews.current.postMessage(params);
       }
     });
   };
 
   const onWebViewMessage = async webViews => {
-    console.log('onMessage webViews', webViews);
     const jsonData = JSON.parse(webViews.nativeEvent.data);
-
-    console.log('jsonData ??', jsonData);
 
     if (
       jsonData.type === 'sns_login' &&
@@ -309,10 +293,6 @@ const Home = props => {
     }
 
     if (jsonData.act === 'useragent') {
-      console.log(
-        '웹으로부터 받아온 jsonData.useragent ::',
-        jsonData.useragent,
-      );
       setUserAgent(jsonData.useragent);
     }
 
@@ -348,8 +328,6 @@ const Home = props => {
   };
 
   const handleBackButton = () => {
-    console.log('currRoute.name ??', currRoute.name);
-
     // 제일 첫페이지에서 뒤로가기시 어플 종료
     if (navigation.isFocused() === true) {
       // 다른 화면갔을경우 뒤로가기 막기 위한 요소
@@ -386,9 +364,7 @@ const Home = props => {
     // }
 
     const {url} = webViewState;
-    console.log('webViewState url >>>', url);
 
-    console.log('webViewState >>>', webViewState);
     setNavState(webViewState.canGoBack);
     setUrls(webViewState.url);
 
@@ -423,13 +399,8 @@ const Home = props => {
       event.url.startsWith('https://') ||
       event.url.startsWith('about:blank')
     ) {
-      console.log('uri.hostname() ?', uri.hostname());
-
       if (uri.hostname() !== '' && uri.hostname() !== 'm.facebook.com') {
         let chkUri = 'Y';
-
-        console.log('INNER uri.hostname() ?', uri.hostname());
-        console.log('domainUrl ?', domainUrl);
 
         if (uri.hostname() === domainUrl) {
           chkUri = 'N';
@@ -484,11 +455,9 @@ const Home = props => {
           chkUri = 'N';
         }
 
-        console.log('INNER chkUri ?', chkUri);
-
         if (chkUri === 'Y') {
           // Alert.alert('새창')
-          console.log('event.url ??', event.url);
+
           Linking.openURL(event.url).catch(err => {
             console.log('onShouldStartLoadWithRequest Linking.openURL', err);
           });
@@ -515,10 +484,6 @@ const Home = props => {
       return false;
     }
   };
-
-  console.log('현재 platform ?', Platform.OS);
-  console.log('현재 userAgent ?', userAgent);
-  console.log('webviewUrl ?', webviewUrl);
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -553,7 +518,7 @@ const Home = props => {
           </View>
         )}
         {/* // SNS 로그인 시 뒤로가기 버튼 표시 */}
-        {console.log('웹뷰 통신 직전 userAgent', userAgent)}
+
         <WebView
           ref={webViews}
           textZoom={100}
