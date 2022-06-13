@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "205343874302",
+    "project_id": "mozaiq-aos",
+    "storage_bucket": "mozaiq-aos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205343874302:android:50d27baead856c713259af",
+        "android_client_info": {
+          "package_name": "com.mozaiq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205343874302-ouu27ug46f41qp9vf40032rdpqts82qh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAix_FYA8jKG0noMWFIdPN9sd68xQYVSXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "205343874302-ouu27ug46f41qp9vf40032rdpqts82qh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
