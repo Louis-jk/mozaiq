@@ -393,6 +393,8 @@ const Home = props => {
       );
     }
 
+    console.log('uri ??', uri);
+
     if (
       event.url.startsWith('mozaiq://') ||
       event.url.startsWith('http://') ||
@@ -453,6 +455,20 @@ const Home = props => {
         }
         if (uri.hostname() !== 'apis.google.com ') {
           chkUri = 'N';
+        }
+
+        // if (uri.hostname() === 'accounts.kakao.com') {
+        //   chkUri = 'Y';
+        // }
+        if (uri.hostname() === 'bizmessage.kakao.com') {
+          chkUri = 'Y';
+
+          //plusfriend/home/@{channelSearchId}
+          kakaoplus: return false;
+        }
+        if (uri.hostname() === 'bizmessage.kakao.com/chat') {
+          chkUri = 'Y';
+          return false;
         }
 
         if (chkUri === 'Y') {
