@@ -40,6 +40,14 @@
 				<string>mozaiq</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakaoe88734daac607d02455495392280c298</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
@@ -51,11 +59,19 @@
 	<string>mozaiq</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<true/>
+	<key>KAKAO_APP_KEY</key>
+	<string>e88734daac607d02455495392280c298</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
 		<string>fb-messenger-share-api</string>
 		<string>fbauth</string>
+		<string>kakaoe88734daac607d02455495392280c298</string>
+		<string>kakaokompassauth</string>
+		<string>storykompassauth</string>
+		<string>kakaolink</string>
+		<string>kakaotalk-5.9.7</string>
+		<string>storylink</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

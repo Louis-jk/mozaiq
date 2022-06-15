@@ -17,8 +17,8 @@
 		B838E87C2851C1340091751C /* assets in Resources */ = {isa = PBXBuildFile; fileRef = B827E7E1283F28890093FDF0 /* assets */; };
 		B85C93842833403000134603 /* hermes.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86DDFF728332B2800E56405 /* hermes.xcframework */; };
 		B86C16A82834BEAE00A9EF5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B86C16A72834BEAE00A9EF5D /* GoogleService-Info.plist */; };
+		B893B02E2859AD39000EECE3 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = B893B02D2859AD39000EECE3 /* main.jsbundle */; };
 		B8A22E1B284F176500B70B38 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A22E1A284F176500B70B38 /* File.swift */; };
-		B8EFDC5D2856C3940058833A /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = B8EFDC5C2856C3940058833A /* main.jsbundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,20 +29,14 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = mozaiq;
 		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		B8FDD17C28324C76007ECD79 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
+		B893B01F28599F86000EECE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B893B01B28599F86000EECE3 /* RNKakaoPlusFriend.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNKakaoPlusFriend;
 		};
-/* End PBXCopyFilesBuildPhase section */
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* mozaiqTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mozaiqTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,9 +62,11 @@
 		B86DDFF428332AD900E56405 /* glog.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = glog.xcframework; path = "Pods/Flipper-Glog/Frameworks/glog.xcframework"; sourceTree = "<group>"; };
 		B86DDFF728332B2800E56405 /* hermes.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = hermes.xcframework; path = "Pods/hermes-engine/destroot/Library/Frameworks/universal/hermes.xcframework"; sourceTree = "<group>"; };
 		B86DDFFC283331D300E56405 /* mozaiq.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = mozaiq.entitlements; path = mozaiq/mozaiq.entitlements; sourceTree = "<group>"; };
+		B893B01B28599F86000EECE3 /* RNKakaoPlusFriend.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNKakaoPlusFriend.xcodeproj; path = "../node_modules/react-native-kakao-plus-friend/ios/RNKakaoPlusFriend.xcodeproj"; sourceTree = "<group>"; };
+		B893B0242859A2BB000EECE3 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		B893B02D2859AD39000EECE3 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		B8A22E19284F176500B70B38 /* mozaiq-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mozaiq-Bridging-Header.h"; sourceTree = "<group>"; };
 		B8A22E1A284F176500B70B38 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		B8EFDC5C2856C3940058833A /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		B8FDD17D28324E99007ECD79 /* double-conversion.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "double-conversion.xcframework"; path = "Pods/Flipper-DoubleConversion/Frameworks/double-conversion.xcframework"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -131,6 +127,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B893B0242859A2BB000EECE3 /* KakaoOpenSDK.framework */,
 				B86DDFF728332B2800E56405 /* hermes.xcframework */,
 				B86DDFF428332AD900E56405 /* glog.xcframework */,
 				B86DDFEF2833274100E56405 /* libDoubleConversion.a */,
@@ -146,6 +143,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B893B01B28599F86000EECE3 /* RNKakaoPlusFriend.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -153,7 +151,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				B8EFDC5C2856C3940058833A /* main.jsbundle */,
+				B893B02D2859AD39000EECE3 /* main.jsbundle */,
 				B8A22E1A284F176500B70B38 /* File.swift */,
 				B827E7E1283F28890093FDF0 /* assets */,
 				13B07FAE1A68108700A75B9A /* mozaiq */,
@@ -174,6 +172,14 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* mozaiq.app */,
 				00E356EE1AD99517003FC87E /* mozaiqTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B893B01C28599F86000EECE3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B893B02028599F86000EECE3 /* libRNKakaoPlusFriend.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -223,7 +229,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				B8FDD17C28324C76007ECD79 /* Embed Frameworks */,
 				D9C6A5B0660BE9A1F1E858D5 /* [CP] Copy Pods Resources */,
 				F60935676A8D7F8911338676 /* [CP-User] [RNFB] Core Configuration */,
 				294BE77D980D7F3C9542AAA7 /* [CP] Embed Pods Frameworks */,
@@ -265,6 +270,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B893B01C28599F86000EECE3 /* Products */;
+					ProjectRef = B893B01B28599F86000EECE3 /* RNKakaoPlusFriend.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* mozaiq */,
@@ -272,6 +283,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B893B02028599F86000EECE3 /* libRNKakaoPlusFriend.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNKakaoPlusFriend.a;
+			remoteRef = B893B01F28599F86000EECE3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
@@ -285,7 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8EFDC5D2856C3940058833A /* main.jsbundle in Resources */,
+				B893B02E2859AD39000EECE3 /* main.jsbundle in Resources */,
 				B838E87C2851C1340091751C /* assets in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				B86C16A82834BEAE00A9EF5D /* GoogleService-Info.plist in Resources */,
@@ -551,15 +572,19 @@
 				CODE_SIGN_ENTITLEMENTS = mozaiq/mozaiq.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2VZFH6Z2JK;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = mozaiq/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -585,14 +610,18 @@
 				CODE_SIGN_ENTITLEMENTS = mozaiq/mozaiq.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2VZFH6Z2JK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = mozaiq/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.6;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",

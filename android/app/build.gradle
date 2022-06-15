@@ -139,8 +139,8 @@ android {
         applicationId "com.mozaiq"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 4
-        versionName "1.0.3"
+        versionCode 5
+        versionName "1.0.4"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
         if (isNewArchitectureEnabled()) {
@@ -283,6 +283,8 @@ dependencies {
     implementation project(':react-native-splash-screen') // Splash Image
 
     implementation project(':react-native-push-notification') // FCM notification (react-native-push-notification)
+
+    implementation project(':RNSendIntentModule') // Android -> 외부 intent 연결 패키지
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'

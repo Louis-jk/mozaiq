@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
+import com.burnweb.rnsendintent.RNSendIntentPackage; // Android -> 외부 intent 연결 패키지
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -32,6 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
           // packages.add(new SplashScreenReactPackage());
           new ReactNativePushNotificationPackage();
+          new RNSendIntentPackage();
           return packages;
         }
 
