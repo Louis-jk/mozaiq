@@ -21,10 +21,10 @@ import SendIntentAndroid from 'react-native-send-intent'
 import messaging from '@react-native-firebase/messaging'
 import PushNotification from 'react-native-push-notification'
 import PushNotificationIOS from '@react-native-community/push-notification-ios'
+import notifee, { AndroidImportance, EventType } from '@notifee/react-native'
+
 import queryString from 'query-string'
 import { Settings, LoginManager, Profile } from 'react-native-fbsdk-next'
-import RNKakaoPlusFriend from 'react-native-kakao-plus-friend'
-import KakaoSDK from '@actbase/react-native-kakaosdk'
 
 const Home = props => {
   useEffect(() => {
@@ -33,20 +33,6 @@ const Home = props => {
       Settings.initializeSDK()
     }
   }, [])
-
-  // useEffect(() => {
-  //   if (Platform.OS === 'ios') {
-  //     window.addEventListener('message', () => {
-  //       const params = JSON.stringify({
-  //         type: 'iphone',
-  //         data: '',
-  //       });
-  //       webViews.current.postMessage(params);
-
-  //       console.log('웹뷰 보내는 param', params);
-  //     });
-  //   }
-  // }, []);
 
   const { height } = Dimensions.get('window')
   const { route, navigation } = props
@@ -90,19 +76,13 @@ const Home = props => {
     };
   }, [])
 
-  const onRemoteNotification = notification => {
-    const isClicked = notification.getData().userInteraction === 1
-
-    if (isClicked) {
-      // Navigate user to another screen
-    } else {
-      // Do something else with push notification
-    }
-  }
-
   // 기기토큰 가져오기
   const requestUserPermission = async () => {
-    const authStatus = await messaging().requestPermission()
+    const authStatus = await messaging().requestPermission({
+      sound: false,
+      announcement: false,
+      badge: true
+    })
     const enabled =
       authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
       authStatus === messaging.AuthorizationStatus.PROVISIONAL
@@ -117,7 +97,7 @@ const Home = props => {
     messaging()
       .getToken()
       .then(token => {
-        // console.log('FCM token >> ', token);
+        console.log('FCM token::', token)
 
         if (token) {
           const type = route.params?.type
@@ -168,46 +148,54 @@ const Home = props => {
     })
   }, [])
 
-  PushNotification.configure({
-    onNotification: notification => {
-      if (notification) {
-        console.log(notification)
-      }
-    }
-  })
+  // PushNotification.configure({
+  //   onNotification: notification => {
+  //     if (notification) {
+  //       console.log('onNotification :: ', notification);
+  //     }
+  //   },
+  // });
 
   useEffect(() => {
-    // 푸시메세지 처리
+    notifee.setBadgeCount(0).then(() => console.log('Badge count removed'))
 
-    // 포그라운드 상태
-    messaging().onMessage(remoteMessage => {
-      if (remoteMessage) {
-        // 푸시 data 에 intent값 으로 웹뷰에 스크립트 처리
-        let newURL = ''
-        if (remoteMessage.data.intent) {
-          newURL = remoteMessage.data.intent
-        }
-        const redirectTo = 'window.location = "' + newURL + '"'
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      // Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
 
-        Toast.show({
-          type: remoteMessage.data.type,
-          text1: remoteMessage.notification.title,
-          text2: remoteMessage.notification.body,
-          onPress: () => webViews.current.injectJavaScript(redirectTo)
-        })
+      let newURL = ''
+      if (remoteMessage.data.intent) {
+        newURL = remoteMessage.data.intent
       }
+      const redirectTo = 'window.location = "' + newURL + '"'
+
+      console.log('remoteMessage', remoteMessage)
+      console.log('redirectTo', redirectTo)
+
+      Toast.show({
+        type: remoteMessage.data.type,
+        text1: remoteMessage.notification.title,
+        text2: remoteMessage.notification.body,
+        onPress: () => webViews.current.injectJavaScript(redirectTo)
+      })
     })
 
+    return unsubscribe
+  }, [])
+
+  useEffect(() => {
     // 백그라운드 상태
     messaging().onNotificationOpenedApp(remoteMessage => {
-      if (Platform.OS === 'ios') {
-        PushNotificationIOS.addNotificationRequest({
-          id: remoteMessage.messageId,
-          title: remoteMessage.notification.title,
-          body: remoteMessage.notification.body,
-          repeats: false
-        })
-      }
+      console.log('ios remoteMessage', remoteMessage)
+
+      // if (Platform.OS === 'ios') {
+      //   PushNotificationIOS.addNotificationRequest({
+      //     id: remoteMessage.messageId,
+      //     title: remoteMessage.notification.title,
+      //     body: remoteMessage.notification.body,
+      //     repeats: false,
+      //     userInfo: remoteMessage
+      //   })
+      // }
 
       if (remoteMessage) {
         // 푸시 data 에 intent값 으로 웹뷰에 스크립트 처리
@@ -226,14 +214,15 @@ const Home = props => {
       .getInitialNotification()
       .then(remoteMessage => {
         if (remoteMessage) {
-          if (Platform.OS === 'ios') {
-            PushNotificationIOS.addNotificationRequest({
-              id: remoteMessage.messageId,
-              title: remoteMessage.notification.title,
-              body: remoteMessage.notification.body,
-              repeats: false
-            })
-          }
+          // if (Platform.OS === 'ios') {
+          //   PushNotificationIOS.addNotificationRequest({
+          //     id: remoteMessage.messageId,
+          //     title: remoteMessage.notification.title,
+          //     body: remoteMessage.notification.body,
+          //     repeats: false,
+          //     userInfo: remoteMessage,
+          //   });
+          // }
 
           // 푸시 data 에 intent값 으로 웹뷰에 스크립트 처리
           let newURL = ''
@@ -257,7 +246,7 @@ const Home = props => {
         }
       })
       .catch(error => console.error('FCM messaging error::', error))
-  }, [])
+  })
 
   // facebook
   const getFbProfile = () => {
@@ -307,9 +296,17 @@ const Home = props => {
       })
     }
 
+    if (jsonData.act === 'logout' && jsonData.logout_type === 'facebook') {
+      // Alert.alert('페이스북 로그아웃?')
+      LoginManager.logOut()
+    }
+
     if (jsonData.act === 'login' && jsonData.login_type === 'facebook') {
-      // setSNSLogin(true);
-      LoginManager.logInWithPermissions(['public_profile']).then(
+      LoginManager.logInWithPermissions(
+        ['public_profile', 'email'],
+        'limited',
+        'my_nonce'
+      ).then(
         function (result) {
           if (result.isCancelled) {
             console.log('Login cancelled')
@@ -478,18 +475,18 @@ const Home = props => {
             // 'kakaoplus://plusfriend/talk/bot/@mozaiq/챗봇 시작'
             // kakaoplus://plusfriend/home/@mozaiq
             // goChatKakaoIos()
-            KakaoSDK.Channel.chat('@mozaiq')
-              .then(res => console.log('channel addFriends res', res))
-              .catch(err => console.log('channel addFriends error', err))
-            // Linking.openURL('kakaoplus://plusfriend/chat/@mozaiq').catch(
-            //   err => {
-            //     console.log(
-            //       'onShouldStartLoadWithRequest Linking.openURL',
-            //       err,
-            //     );
-            //   },
-            // );
-            webViews.current.goBack()
+            // KakaoSDK.Channel.chat('@mozaiq')
+            //   .then(res => console.log('channel addFriends res', res))
+            //   .catch(err => console.log('channel addFriends error', err))
+            Linking.openURL('kakaoplus://plusfriend/talk/chat/@mozaiq').catch(
+              err => {
+                console.log(
+                  'onShouldStartLoadWithRequest Linking.openURL',
+                  err
+                )
+              }
+            )
+            // webViews.current.goBack()
             return false
           }
 
