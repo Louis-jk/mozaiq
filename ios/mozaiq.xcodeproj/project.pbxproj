@@ -13,11 +13,14 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2B762456BD2B1B29D959F774 /* libPods-mozaiq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E9CE155E2740FFB1A7E153 /* libPods-mozaiq.a */; };
+		3B969228138AB9CC74613E4C /* libPods-ImageNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2FE14E6B364AFF317FA1292 /* libPods-ImageNotification.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B838E87C2851C1340091751C /* assets in Resources */ = {isa = PBXBuildFile; fileRef = B827E7E1283F28890093FDF0 /* assets */; };
+		B854BFE62862D98E005DB9E1 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = B854BFE52862D98E005DB9E1 /* NotificationService.m */; };
+		B854BFEA2862D98E005DB9E1 /* ImageNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B854BFE22862D98E005DB9E1 /* ImageNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B854BFF928630756005DB9E1 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = B854BFF828630756005DB9E1 /* main.jsbundle */; };
 		B85C93842833403000134603 /* hermes.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86DDFF728332B2800E56405 /* hermes.xcframework */; };
 		B86C16A82834BEAE00A9EF5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B86C16A72834BEAE00A9EF5D /* GoogleService-Info.plist */; };
-		B893B02E2859AD39000EECE3 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = B893B02D2859AD39000EECE3 /* main.jsbundle */; };
 		B8A22E1B284F176500B70B38 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A22E1A284F176500B70B38 /* File.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,13 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = mozaiq;
 		};
+		B854BFE82862D98E005DB9E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B854BFE12862D98E005DB9E1;
+			remoteInfo = ImageNotification;
+		};
 		B893B01F28599F86000EECE3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B893B01B28599F86000EECE3 /* RNKakaoPlusFriend.xcodeproj */;
@@ -37,6 +47,20 @@
 			remoteInfo = RNKakaoPlusFriend;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B854BF9528629A0F005DB9E1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B854BFEA2862D98E005DB9E1 /* ImageNotification.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* mozaiqTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mozaiqTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,11 +76,18 @@
 		228C6837EA82042E5CFEF4CF /* libPods-mozaiq-mozaiqTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mozaiq-mozaiqTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BCC7CDB455D607E5B88A537 /* Pods-mozaiq.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mozaiq.debug.xcconfig"; path = "Target Support Files/Pods-mozaiq/Pods-mozaiq.debug.xcconfig"; sourceTree = "<group>"; };
 		55893F84CC679EEEB4C40B07 /* Pods-mozaiq-mozaiqTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mozaiq-mozaiqTests.debug.xcconfig"; path = "Target Support Files/Pods-mozaiq-mozaiqTests/Pods-mozaiq-mozaiqTests.debug.xcconfig"; sourceTree = "<group>"; };
+		55A2B430A0925CB757C8943C /* Pods-ImageNotification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageNotification.release.xcconfig"; path = "Target Support Files/Pods-ImageNotification/Pods-ImageNotification.release.xcconfig"; sourceTree = "<group>"; };
 		661985D44A15074BDF3BCE6D /* Pods-mozaiq-mozaiqTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mozaiq-mozaiqTests.release.xcconfig"; path = "Target Support Files/Pods-mozaiq-mozaiqTests/Pods-mozaiq-mozaiqTests.release.xcconfig"; sourceTree = "<group>"; };
 		71ED7AB5606FFA1CB62C7BCD /* Pods-mozaiq.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mozaiq.release.xcconfig"; path = "Target Support Files/Pods-mozaiq/Pods-mozaiq.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = mozaiq/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A2FE14E6B364AFF317FA1292 /* libPods-ImageNotification.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ImageNotification.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B81B5A99283222C4003F48A4 /* OpenSSL.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OpenSSL.xcframework; path = "Pods/OpenSSL-Universal/Frameworks/OpenSSL.xcframework"; sourceTree = "<group>"; };
 		B827E7E1283F28890093FDF0 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		B854BFE22862D98E005DB9E1 /* ImageNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ImageNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B854BFE42862D98E005DB9E1 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		B854BFE52862D98E005DB9E1 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		B854BFE72862D98E005DB9E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B854BFF828630756005DB9E1 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		B86C16A72834BEAE00A9EF5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B86DDFEF2833274100E56405 /* libDoubleConversion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libDoubleConversion.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86DDFF428332AD900E56405 /* glog.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = glog.xcframework; path = "Pods/Flipper-Glog/Frameworks/glog.xcframework"; sourceTree = "<group>"; };
@@ -64,10 +95,10 @@
 		B86DDFFC283331D300E56405 /* mozaiq.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = mozaiq.entitlements; path = mozaiq/mozaiq.entitlements; sourceTree = "<group>"; };
 		B893B01B28599F86000EECE3 /* RNKakaoPlusFriend.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNKakaoPlusFriend.xcodeproj; path = "../node_modules/react-native-kakao-plus-friend/ios/RNKakaoPlusFriend.xcodeproj"; sourceTree = "<group>"; };
 		B893B0242859A2BB000EECE3 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
-		B893B02D2859AD39000EECE3 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		B8A22E19284F176500B70B38 /* mozaiq-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mozaiq-Bridging-Header.h"; sourceTree = "<group>"; };
 		B8A22E1A284F176500B70B38 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		B8FDD17D28324E99007ECD79 /* double-conversion.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "double-conversion.xcframework"; path = "Pods/Flipper-DoubleConversion/Frameworks/double-conversion.xcframework"; sourceTree = "<group>"; };
+		C53D81E0453D84A569D112A7 /* Pods-ImageNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageNotification.debug.xcconfig"; path = "Target Support Files/Pods-ImageNotification/Pods-ImageNotification.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -86,6 +117,14 @@
 			files = (
 				B85C93842833403000134603 /* hermes.xcframework in Frameworks */,
 				2B762456BD2B1B29D959F774 /* libPods-mozaiq.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B854BFDF2862D98E005DB9E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B969228138AB9CC74613E4C /* libPods-ImageNotification.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +175,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				20E9CE155E2740FFB1A7E153 /* libPods-mozaiq.a */,
 				228C6837EA82042E5CFEF4CF /* libPods-mozaiq-mozaiqTests.a */,
+				A2FE14E6B364AFF317FA1292 /* libPods-ImageNotification.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,12 +191,13 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				B893B02D2859AD39000EECE3 /* main.jsbundle */,
+				B854BFF828630756005DB9E1 /* main.jsbundle */,
 				B8A22E1A284F176500B70B38 /* File.swift */,
 				B827E7E1283F28890093FDF0 /* assets */,
 				13B07FAE1A68108700A75B9A /* mozaiq */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* mozaiqTests */,
+				B854BFE32862D98E005DB9E1 /* ImageNotification */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -172,8 +213,19 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* mozaiq.app */,
 				00E356EE1AD99517003FC87E /* mozaiqTests.xctest */,
+				B854BFE22862D98E005DB9E1 /* ImageNotification.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B854BFE32862D98E005DB9E1 /* ImageNotification */ = {
+			isa = PBXGroup;
+			children = (
+				B854BFE42862D98E005DB9E1 /* NotificationService.h */,
+				B854BFE52862D98E005DB9E1 /* NotificationService.m */,
+				B854BFE72862D98E005DB9E1 /* Info.plist */,
+			);
+			path = ImageNotification;
 			sourceTree = "<group>";
 		};
 		B893B01C28599F86000EECE3 /* Products */ = {
@@ -191,6 +243,8 @@
 				71ED7AB5606FFA1CB62C7BCD /* Pods-mozaiq.release.xcconfig */,
 				55893F84CC679EEEB4C40B07 /* Pods-mozaiq-mozaiqTests.debug.xcconfig */,
 				661985D44A15074BDF3BCE6D /* Pods-mozaiq-mozaiqTests.release.xcconfig */,
+				C53D81E0453D84A569D112A7 /* Pods-ImageNotification.debug.xcconfig */,
+				55A2B430A0925CB757C8943C /* Pods-ImageNotification.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -232,15 +286,35 @@
 				D9C6A5B0660BE9A1F1E858D5 /* [CP] Copy Pods Resources */,
 				F60935676A8D7F8911338676 /* [CP-User] [RNFB] Core Configuration */,
 				294BE77D980D7F3C9542AAA7 /* [CP] Embed Pods Frameworks */,
+				B854BF9528629A0F005DB9E1 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B854BFE92862D98E005DB9E1 /* PBXTargetDependency */,
 			);
 			name = mozaiq;
 			productName = mozaiq;
 			productReference = 13B07F961A680F5B00A75B9A /* mozaiq.app */;
 			productType = "com.apple.product-type.application";
+		};
+		B854BFE12862D98E005DB9E1 /* ImageNotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B854BFEB2862D98E005DB9E1 /* Build configuration list for PBXNativeTarget "ImageNotification" */;
+			buildPhases = (
+				CB90BDF5B870550550814262 /* [CP] Check Pods Manifest.lock */,
+				B854BFDE2862D98E005DB9E1 /* Sources */,
+				B854BFDF2862D98E005DB9E1 /* Frameworks */,
+				B854BFE02862D98E005DB9E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ImageNotification;
+			productName = ImageNotification;
+			productReference = B854BFE22862D98E005DB9E1 /* ImageNotification.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -248,6 +322,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -256,6 +331,9 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1330;
+					};
+					B854BFE12862D98E005DB9E1 = {
+						CreatedOnToolsVersion = 13.3.1;
 					};
 				};
 			};
@@ -280,6 +358,7 @@
 			targets = (
 				13B07F861A680F5B00A75B9A /* mozaiq */,
 				00E356ED1AD99517003FC87E /* mozaiqTests */,
+				B854BFE12862D98E005DB9E1 /* ImageNotification */,
 			);
 		};
 /* End PBXProject section */
@@ -306,11 +385,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B893B02E2859AD39000EECE3 /* main.jsbundle in Resources */,
+				B854BFF928630756005DB9E1 /* main.jsbundle in Resources */,
 				B838E87C2851C1340091751C /* assets in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				B86C16A82834BEAE00A9EF5D /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B854BFE02862D98E005DB9E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +467,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-mozaiq-mozaiqTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB90BDF5B870550550814262 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImageNotification-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -496,6 +604,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B854BFDE2862D98E005DB9E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B854BFE62862D98E005DB9E1 /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -503,6 +619,11 @@
 			isa = PBXTargetDependency;
 			target = 13B07F861A680F5B00A75B9A /* mozaiq */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+		B854BFE92862D98E005DB9E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B854BFE12862D98E005DB9E1 /* ImageNotification */;
+			targetProxy = B854BFE82862D98E005DB9E1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -566,13 +687,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4BCC7CDB455D607E5B88A537 /* Pods-mozaiq.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = mozaiq/mozaiq.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 2VZFH6Z2JK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -584,7 +706,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -604,13 +726,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71ED7AB5606FFA1CB62C7BCD /* Pods-mozaiq.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = mozaiq/mozaiq.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 2VZFH6Z2JK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -621,7 +744,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.1.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -767,6 +890,7 @@
 					"\"${PODS_ROOT}/OpenSSL-Universal/Frameworks\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
@@ -775,6 +899,82 @@
 				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B854BFEC2862D98E005DB9E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C53D81E0453D84A569D112A7 /* Pods-ImageNotification.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 11;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2VZFH6Z2JK;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ImageNotification/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ImageNotification;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mozaiq.ImageNotification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Debug;
+		};
+		B854BFED2862D98E005DB9E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55A2B430A0925CB757C8943C /* Pods-ImageNotification.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 11;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2VZFH6Z2JK;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ImageNotification/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ImageNotification;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mozaiq.ImageNotification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -804,6 +1004,15 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B854BFEB2862D98E005DB9E1 /* Build configuration list for PBXNativeTarget "ImageNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B854BFEC2862D98E005DB9E1 /* Debug */,
+				B854BFED2862D98E005DB9E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
