@@ -15,13 +15,14 @@
 		2B762456BD2B1B29D959F774 /* libPods-mozaiq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E9CE155E2740FFB1A7E153 /* libPods-mozaiq.a */; };
 		3B969228138AB9CC74613E4C /* libPods-ImageNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2FE14E6B364AFF317FA1292 /* libPods-ImageNotification.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B80D04BF286986FF00AE3B14 /* 1242×2688_new.png in Resources */ = {isa = PBXBuildFile; fileRef = B80D04BE286986FF00AE3B14 /* 1242×2688_new.png */; };
 		B838E87C2851C1340091751C /* assets in Resources */ = {isa = PBXBuildFile; fileRef = B827E7E1283F28890093FDF0 /* assets */; };
 		B854BFE62862D98E005DB9E1 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = B854BFE52862D98E005DB9E1 /* NotificationService.m */; };
 		B854BFEA2862D98E005DB9E1 /* ImageNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B854BFE22862D98E005DB9E1 /* ImageNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B854BFF928630756005DB9E1 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = B854BFF828630756005DB9E1 /* main.jsbundle */; };
 		B85C93842833403000134603 /* hermes.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86DDFF728332B2800E56405 /* hermes.xcframework */; };
 		B86C16A82834BEAE00A9EF5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B86C16A72834BEAE00A9EF5D /* GoogleService-Info.plist */; };
 		B8A22E1B284F176500B70B38 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A22E1A284F176500B70B38 /* File.swift */; };
+		B8E67D162877D6AC00F424FB /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = B8E67D152877D6AC00F424FB /* main.jsbundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,13 +82,13 @@
 		71ED7AB5606FFA1CB62C7BCD /* Pods-mozaiq.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mozaiq.release.xcconfig"; path = "Target Support Files/Pods-mozaiq/Pods-mozaiq.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = mozaiq/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2FE14E6B364AFF317FA1292 /* libPods-ImageNotification.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ImageNotification.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B80D04BE286986FF00AE3B14 /* 1242×2688_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1242×2688_new.png"; sourceTree = "<group>"; };
 		B81B5A99283222C4003F48A4 /* OpenSSL.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OpenSSL.xcframework; path = "Pods/OpenSSL-Universal/Frameworks/OpenSSL.xcframework"; sourceTree = "<group>"; };
 		B827E7E1283F28890093FDF0 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		B854BFE22862D98E005DB9E1 /* ImageNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ImageNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B854BFE42862D98E005DB9E1 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
 		B854BFE52862D98E005DB9E1 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
 		B854BFE72862D98E005DB9E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B854BFF828630756005DB9E1 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		B86C16A72834BEAE00A9EF5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B86DDFEF2833274100E56405 /* libDoubleConversion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libDoubleConversion.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86DDFF428332AD900E56405 /* glog.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = glog.xcframework; path = "Pods/Flipper-Glog/Frameworks/glog.xcframework"; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 		B893B0242859A2BB000EECE3 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		B8A22E19284F176500B70B38 /* mozaiq-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mozaiq-Bridging-Header.h"; sourceTree = "<group>"; };
 		B8A22E1A284F176500B70B38 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		B8E67D152877D6AC00F424FB /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		B8FDD17D28324E99007ECD79 /* double-conversion.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "double-conversion.xcframework"; path = "Pods/Flipper-DoubleConversion/Frameworks/double-conversion.xcframework"; sourceTree = "<group>"; };
 		C53D81E0453D84A569D112A7 /* Pods-ImageNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageNotification.debug.xcconfig"; path = "Target Support Files/Pods-ImageNotification/Pods-ImageNotification.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -151,6 +153,7 @@
 		13B07FAE1A68108700A75B9A /* mozaiq */ = {
 			isa = PBXGroup;
 			children = (
+				B80D04BE286986FF00AE3B14 /* 1242×2688_new.png */,
 				B86C16A72834BEAE00A9EF5D /* GoogleService-Info.plist */,
 				B86DDFFC283331D300E56405 /* mozaiq.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -191,7 +194,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				B854BFF828630756005DB9E1 /* main.jsbundle */,
+				B8E67D152877D6AC00F424FB /* main.jsbundle */,
 				B8A22E1A284F176500B70B38 /* File.swift */,
 				B827E7E1283F28890093FDF0 /* assets */,
 				13B07FAE1A68108700A75B9A /* mozaiq */,
@@ -385,7 +388,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B854BFF928630756005DB9E1 /* main.jsbundle in Resources */,
+				B8E67D162877D6AC00F424FB /* main.jsbundle in Resources */,
+				B80D04BF286986FF00AE3B14 /* 1242×2688_new.png in Resources */,
 				B838E87C2851C1340091751C /* assets in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				B86C16A82834BEAE00A9EF5D /* GoogleService-Info.plist in Resources */,
@@ -694,7 +698,7 @@
 				CODE_SIGN_ENTITLEMENTS = mozaiq/mozaiq.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 2VZFH6Z2JK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -706,7 +710,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -733,7 +737,7 @@
 				CODE_SIGN_ENTITLEMENTS = mozaiq/mozaiq.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 2VZFH6Z2JK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -744,7 +748,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.4;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -914,7 +918,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 15;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 2VZFH6Z2JK;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -927,7 +931,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mozaiq.ImageNotification;
@@ -953,7 +957,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 15;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2VZFH6Z2JK;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -966,7 +970,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.4;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mozaiq.ImageNotification;

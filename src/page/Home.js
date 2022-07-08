@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import firebase from '@react-native-firebase/app'
 import {
   SafeAreaView,
   StatusBar,
@@ -24,16 +25,14 @@ import PushNotificationIOS from '@react-native-community/push-notification-ios'
 import notifee, { AndroidImportance, EventType } from '@notifee/react-native'
 
 import queryString from 'query-string'
-import { Settings, LoginManager, Profile } from 'react-native-fbsdk-next'
+import {
+  Settings,
+  LoginManager,
+  Profile,
+  AccessToken
+} from 'react-native-fbsdk-next'
 
 const Home = props => {
-  useEffect(() => {
-    if (Platform.OS === 'ios') {
-      Settings.setAppID('1369382873562859')
-      Settings.initializeSDK()
-    }
-  }, [])
-
   const { height } = Dimensions.get('window')
   const { route, navigation } = props
 
@@ -41,10 +40,13 @@ const Home = props => {
 
   // 웹작업 토큰이 회원테이블에 있으면 자동로그인 없으면 로그인 페이지로 작업
   const domainUrl = 'mozaiq.kr'
-  const appDomain = `https://${domainUrl}/`
-  const url = appDomain + 'auth.php?chk_app=Y&app_token='
+  const appDomain = `https://${domainUrl}`
+  const url = appDomain + '/auth.php?chk_app=Y&app_token='
+  const UniversalLink = `https://${domainUrl}/share.php?url=mozaiq://`
+  // const url = appDomain + ''
   const [webviewUrl, setWebviewUrl] = useState(url)
-  const [urls, setUrls] = useState('ss')
+  // const [webviewUrl, setWebviewUrl] = useState('')
+  const [urls, setUrls] = useState('')
   const [isLoading, setLoading] = useState(false)
   const [userAgent, setUserAgent] = useState('')
   const [navState, setNavState] = useState()
@@ -52,34 +54,30 @@ const Home = props => {
 
   const webViews = React.useRef()
 
+  // const firebaseConfig = {
+  //   apiKey: 'AIzaSyCRtAXmRNy_bRlBSkN1L5x59LZr59dKeGg',
+  //   authDomain: 'mozaiq-aos.firebaseapp.com',
+  //   projectId: 'mozaiq-aos',
+  //   storageBucket: 'mozaiq-aos.appspot.com',
+  //   messagingSenderId: '205343874302',
+  //   appId: '1:205343874302:web:f9bcb07e5bf685123259af',
+  //   measurementId: 'G-6HZ1R6TZVK'
+  // }
+
+  // firebase.initializeApp(firebaseConfig)
+
   useEffect(() => {
-    Linking.getInitialURL() // 최초 실행 시에 Universal link 또는 URL scheme요청이 있었을 때 여기서 찾을 수 있음
-      .then(value => {
-        const replaceUrl = value.replace('mozaiq://', '')
-        const fullUrl = `https://${replaceUrl}`
-        setWebviewUrl(fullUrl)
-      })
-
-    const linkEvent = Linking.addEventListener('url', e => {
-      // 앱이 실행되어있는 상태에서 요청이 왔을 때 처리하는 이벤트 등록
-      const replaceUrl = e.url.replace('mozaiq://', '')
-      const fullUrl = `https://${replaceUrl}`
-
-      setWebviewUrl(fullUrl)
-
-      const redirectTo = 'window.location = "' + fullUrl + '"'
-      webViews.current.injectJavaScript(redirectTo)
-    })
-
-    return () => {
-      linkEvent.remove()
-    };
+    if (Platform.OS === 'ios') {
+      Settings.setAppID('1369382873562859')
+      Settings.initializeSDK()
+    }
   }, [])
 
   // 기기토큰 가져오기
   const requestUserPermission = async () => {
     const authStatus = await messaging().requestPermission({
-      sound: false,
+      alert: true,
+      sound: true,
       announcement: false,
       badge: true
     })
@@ -103,6 +101,8 @@ const Home = props => {
           const type = route.params?.type
           const response = route.params?.response
 
+          console.log('token response', response)
+
           if (response) {
             const query = queryString.stringify(response)
             if (type === 'payment') {
@@ -117,13 +117,26 @@ const Home = props => {
               setWebviewUrl(redirectUrl)
             }
           } else {
-            setWebviewUrl(url + token)
+            const newUrl = url + token
+            if (webviewUrl !== newUrl) {
+              setWebviewUrl(newUrl)
+              // webViews.current.injectJavaScript(newUrl)
+            }
+
+            // console.count('token ?', token)
+            // console.log('token ?', token)
+            // console.count('newUrl ?', newUrl)
+            // console.log('newUrl ?', newUrl)
+
+            // setWebviewUrl(url + token)
+            // const redirectUrl = url + token
+            // webViews.current.injectJavaScript(redirectUrl)
 
             // const redirectTo = 'window.location = "' + url + token + '"';
             // webViews.current.injectJavaScript(redirectTo);
           }
 
-          return true
+          return false
         } else {
           return false
         }
@@ -143,18 +156,112 @@ const Home = props => {
 
     setLoading(true)
 
-    return messaging().onTokenRefresh(token => {
-      setWebviewUrl(url + token)
+    // return messaging().onTokenRefresh(token => {
+    //   setWebviewUrl(url + token)
+    // })
+  }, [])
+
+  useEffect(() => {
+    Linking.getInitialURL() // 최초 실행 시에 Universal link 또는 URL scheme요청이 있었을 때 여기서 찾을 수 있음
+      .then(value => {
+        console.log('Linking.getInitialURL value ?', value)
+        if (value) {
+          const replaceUrl = value.replace('mozaiq://', '')
+          const fullUrl = `https://${replaceUrl}`
+          setWebviewUrl(fullUrl)
+        } else {
+          return false
+        }
+      })
+      .catch(err => console.error('linking error', err))
+
+    const linkEvent = Linking.addEventListener('url', e => {
+      console.log('iOS link event comming ?')
+      console.log('Linking.addEventListener url ?', e)
+      // 앱이 실행되어있는 상태에서 요청이 왔을 때 처리하는 이벤트 등록
+      const { url: linkUrl } = e
+
+      console.log('linkUrl ::', linkUrl)
+
+      if (linkUrl.includes(`${appDomain}/share.php?url=mozaiq://`)) {
+        const replaceUrl = linkUrl.replace(
+          `${appDomain}/share.php?url=mozaiq://`,
+          ''
+        )
+        const fullUrl = `https://${replaceUrl}`
+        const redirectTo = 'window.location = "' + fullUrl + '"'
+        webViews.current.injectJavaScript(redirectTo)
+      }
+
+      if (linkUrl.startsWith('mozaiq://')) {
+        console.log('포함')
+        const replaceUrl = linkUrl.replace('mozaiq://', '')
+        const fullUrl = `https://${replaceUrl}`
+        const redirectTo = 'window.location = "' + fullUrl + '"'
+        webViews.current.injectJavaScript(redirectTo)
+      }
     })
+
+    return () => {
+      linkEvent.remove()
+    };
   }, [])
 
   // PushNotification.configure({
-  //   onNotification: notification => {
-  //     if (notification) {
-  //       console.log('onNotification :: ', notification);
-  //     }
+  //   onRegister: function (token) {
+  //     console.log('TOKEN:', token)
   //   },
-  // });
+  //   onNotification: function (notification) {
+  //     console.log('NOTIFICATION:', notification)
+  //     notification.finish(PushNotificationIOS.FetchResult.NoData)
+  //   },
+  //   onAction: function (notification) {
+  //     console.log('ACTION:', notification.action)
+  //     console.log('NOTIFICATION:', notification)
+  //   },
+  //   onRegistrationError: function (err) {
+  //     console.error(err.message, err)
+  //   },
+  //   permissions: {
+  //     alert: true,
+  //     badge: true,
+  //     sound: true
+  //   },
+  //   popInitialNotification: true,
+  //   requestPermissions: true
+  // })
+
+  // const localNotification = remoteMessage => {
+  //   const {notification, data, messageId} = remoteMessage;
+
+  //   console.log('remoteMessage??', remoteMessage);
+  //   console.log('notification??', notification);
+  //   const options =
+  //     Platform.OS === 'ios'
+  //       ? {
+  //           title: notification.title,
+  //           message: notification.body || '',
+  //           userInfo: data,
+  //         }
+  //       : {
+  //           channelId: notification.android.channelId,
+  //           largeIcon: '@drawable/splash_image',
+  //           smallIcon: '@drawable/splash_image',
+  //           bigPictureUrl: notification.android.imageUrl,
+  //           largeIconUrl: notification.android.imageUrl,
+  //           // picture: notification.android.imageUrl,
+  //           bigText: notification.body || '',
+  //           subText: notification.title,
+  //           title: notification.title,
+  //           message: notification.body || '',
+  //           userInfo: data,
+  //           messageId,
+  //           priority: 'high',
+  //           importance: 'high',
+  //           // actions: ['보러가기'],
+  //         };
+  //   PushNotification.localNotification(options);
+  // };
 
   useEffect(() => {
     notifee.setBadgeCount(0).then(() => console.log('Badge count removed'))
@@ -162,14 +269,16 @@ const Home = props => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       // Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
 
+      // localNotification(remoteMessage);
+
       let newURL = ''
       if (remoteMessage.data.intent) {
         newURL = remoteMessage.data.intent
       }
       const redirectTo = 'window.location = "' + newURL + '"'
 
-      console.log('remoteMessage', remoteMessage)
-      console.log('redirectTo', redirectTo)
+      // console.log('remoteMessage', remoteMessage)
+      // console.log('redirectTo', redirectTo)
 
       Toast.show({
         type: remoteMessage.data.type,
@@ -185,7 +294,7 @@ const Home = props => {
   useEffect(() => {
     // 백그라운드 상태
     messaging().onNotificationOpenedApp(remoteMessage => {
-      console.log('ios remoteMessage', remoteMessage)
+      // console.log('ios remoteMessage', remoteMessage)
 
       // if (Platform.OS === 'ios') {
       //   PushNotificationIOS.addNotificationRequest({
@@ -246,11 +355,11 @@ const Home = props => {
         }
       })
       .catch(error => console.error('FCM messaging error::', error))
-  })
+  }, [])
 
   // facebook
   const getFbProfile = () => {
-    Profile.getCurrentProfile().then(function (currentProfile) {
+    Profile.getCurrentProfile().then(currentProfile => {
       if (currentProfile) {
         console.log(
           'The current logged user is: ' +
@@ -265,65 +374,91 @@ const Home = props => {
         })
 
         webViews.current.postMessage(params)
+
+        // console.count('페이스 북 로그인 postMessage? ', params)
+        // console.log('페이스 북 가나? ', params)
       }
     })
   };
 
+  const facebookLogin = param => {
+    webViews.current.postMessage(param)
+  };
+
   const onWebViewMessage = async webViews => {
-    const jsonData = JSON.parse(webViews.nativeEvent.data)
+    if (webViews) {
+      // console.count('webview message ??', webViews)
+      console.log('webview message ??', webViews)
 
-    if (
-      jsonData.type === 'sns_login' &&
-      jsonData.act !== 'login' &&
-      jsonData.login_type !== 'facebook'
-    ) {
-      setTimeout(() => {
-        setSNSLogin(true)
-      }, 500)
-    } else {
-      setSNSLogin(false)
-    }
+      const jsonData = JSON.parse(webViews.nativeEvent.data)
 
-    if (jsonData.act === 'useragent') {
-      setUserAgent(jsonData.useragent)
-    }
+      console.log('webview message jsonData ??', jsonData)
 
-    if (jsonData?.type === 'Payment') {
-      navigation.navigate('Payment', {
-        ...jsonData.data,
-        usercode: jsonData.usercode,
-        beforePath: urls
-      })
-    }
+      if (
+        jsonData.type === 'sns_login' &&
+        jsonData.act !== 'login' &&
+        jsonData.login_type !== 'facebook'
+      ) {
+        setTimeout(() => {
+          setSNSLogin(true)
+        }, 500)
+      } else {
+        setSNSLogin(false)
+      }
 
-    if (jsonData.act === 'logout' && jsonData.logout_type === 'facebook') {
-      // Alert.alert('페이스북 로그아웃?')
-      LoginManager.logOut()
-    }
+      if (jsonData.act === 'useragent') {
+        setUserAgent(`${jsonData.useragent}`)
+      }
 
-    if (jsonData.act === 'login' && jsonData.login_type === 'facebook') {
-      LoginManager.logInWithPermissions(
-        ['public_profile', 'email'],
-        'limited',
-        'my_nonce'
-      ).then(
-        function (result) {
-          if (result.isCancelled) {
-            console.log('Login cancelled')
-          } else {
-            console.log(
-              'Login success with permissions: ' +
-                result.grantedPermissions.toString()
-            )
-            getFbProfile()
+      if (jsonData?.type === 'Payment') {
+        navigation.navigate('Payment', {
+          ...jsonData.data,
+          usercode: jsonData.usercode,
+          beforePath: urls
+        })
+      }
+
+      if (jsonData.act === 'logout' && jsonData.logout_type === 'facebook') {
+        // Alert.alert('페이스북 로그아웃?')
+        LoginManager.logOut()
+      }
+
+      if (jsonData.act === 'login' && jsonData.login_type === 'facebook') {
+        console.log('FACEBOOK LOGIN PRESS!!')
+        console.log('FACEBOOK LOGIN PRESS!! jsonData act', jsonData.act)
+        console.log(
+          'FACEBOOK LOGIN PRESS!! jsonData.login_type',
+          jsonData.login_type
+        )
+        LoginManager.logInWithPermissions(['public_profile', 'email']).then(
+          async result => {
+            // console.time('페이스북 로그인 result', result)
+
+            if (result.isCancelled) {
+              console.log('Login cancelled')
+            } else {
+              console.log('페이스북 로그인 성공 result', result)
+              console.log(
+                'Login success with permissions: ' +
+                  result.grantedPermissions.toString()
+              )
+              const fbAccessToken =
+                await AccessToken.getCurrentAccessToken().then(data => {
+                  console.log(
+                    'facebook accessToken',
+                    data.accessToken.toString()
+                  )
+                  getFbProfile()
+                })
+            }
+          },
+          error => {
+            console.log('Login fail with error: ' + error)
           }
-        },
-        function (error) {
-          console.log('Login fail with error: ' + error)
-        }
-      )
-    } else {
-      setSNSLogin(false)
+        )
+      } else {
+        setSNSLogin(false)
+      }
     }
   }
 
@@ -363,10 +498,10 @@ const Home = props => {
     //   webViews.current.stopLoading();
     // }
 
-    const { url } = webViewState
+    const { url, canGoBack } = webViewState
 
-    setNavState(webViewState.canGoBack)
-    setUrls(webViewState.url)
+    setNavState(canGoBack)
+    setUrls(url)
 
     // 안드로이드 뒤로가기 버튼 처리
     BackHandler.addEventListener('hardwareBackPress', handleBackButton)
@@ -377,9 +512,23 @@ const Home = props => {
   // };
 
   const onShouldStartLoadWithRequest = event => {
+    // console.count('webview onShouldStartLoadWithRequest :: ', event)
+
     const { url, lockIdentifier } = event
     const URIJS = require('urijs')
     const uri = new URIJS(url)
+
+    // iOS의 경우 이쪽으로 들어옴
+    if (url.includes(UniversalLink)) {
+      const replaceUrl = url.replace(
+        `${appDomain}/share.php?url=mozaiq://`,
+        ''
+      )
+      const fullUrl = `https://${replaceUrl}`
+      const redirectTo = 'window.location = "' + fullUrl + '"'
+      webViews.current.injectJavaScript(redirectTo)
+      return false
+    }
 
     if (
       /* && react-native-webview 버전이 v10.8.3 이상 */
@@ -405,6 +554,14 @@ const Home = props => {
       event.url.startsWith('https://') ||
       event.url.startsWith('about:blank')
     ) {
+      // 테스팅
+      console.log('uri.hostname() ?', uri.hostname())
+      const l01 = uri.hostname() === 'bizmessage.kakao.com'
+      const l02 = uri.hostname() === 'bizmessage.kakao.com/chat'
+      console.log('l01 ?', l01)
+      console.log('l02 ?', l02)
+      // 테스팅
+
       if (uri.hostname() !== '' && uri.hostname() !== 'm.facebook.com') {
         let chkUri = 'Y'
 
@@ -457,7 +614,10 @@ const Home = props => {
         if (uri.hostname() !== 'firebaseapp.com') {
           chkUri = 'N'
         }
-        if (uri.hostname() !== 'apis.google.com ') {
+        if (uri.hostname() !== 'apis.google.com') {
+          chkUri = 'N'
+        }
+        if (uri.hostname() !== 'design.happytalkio.com') {
           chkUri = 'N'
         }
 
@@ -529,6 +689,15 @@ const Home = props => {
     }
   }
 
+  console.log('webviewUrl', webviewUrl)
+  console.log('urls', urls)
+  console.log(
+    'urls.indexOf accounts.google.com ',
+    urls.indexOf('accounts.google.com')
+  )
+  console.log('Platform.OS ', Platform.OS)
+  console.log('Platform.OS android ?', Platform.OS === 'android')
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle='light-content' />
@@ -569,11 +738,7 @@ const Home = props => {
           ref={webViews}
           textZoom={100}
           source={{ uri: webviewUrl }}
-          userAgent={
-            urls.indexOf('accounts.google.com') > 0 && Platform.OS === 'android'
-              ? 'mozilla/5.0 (linux; android 6.0; nexus 5 build/mra58n) applewebkit/537.36 (khtml, like gecko) chrome/102.0.5005.61 mobile safari/537.36'
-              : userAgent
-          }
+          userAgent={userAgent}
           useWebKit={false}
           sharedCookiesEnabled
           onMessage={webViews => onWebViewMessage(webViews)}
